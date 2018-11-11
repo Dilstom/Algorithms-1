@@ -2,6 +2,15 @@
 
 import sys
 
+
+#  climbing_stairs(n):
+#   if n < 0:
+#     return 0
+#   elif n == 0:
+#     return 1
+#   else:
+#     return climbing_stair
+
 def climbing_stairs(n, cache=None):
   # what happens when n == 0?
   if n == 0:
@@ -13,8 +22,13 @@ def climbing_stairs(n, cache=None):
     return cache[n]
   else:
     if not cache:
-      # initialize a cache
+      # initialize a cache. 'n+1' to include 'n' 
       cache = {i: 0 for i in range(n+1)}
+      # this gives us a dictionary with keys from 0 to n and all the values = 0 
+      # we can also use a list:
+      # cache = [0 for i in range(n+1)]
+      # make use of the array indexes  
+      # now, populate the cache: 
     cache[n] = climbing_stairs(n-1, cache) + climbing_stairs(n-2, cache) + climbing_stairs(n-3, cache) 
     return cache[n]
 
